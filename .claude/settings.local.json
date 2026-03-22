@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew assembleDebug --no-build-cache 2>&1)",
+      "Bash(export JAVA_HOME=\"C:\\\\Program Files\\\\Android\\\\Android Studio\\\\jbr\")",
+      "Bash(export PATH=\"$JAVA_HOME/bin:$PATH\")",
+      "Bash(./gradlew tasks:*)",
+      "Bash(./gradlew assembleDebug --no-build-cache)",
+      "Bash(rm -f app/src/main/java/com/fallice/ootd/App.kt)",
+      "Bash(rm -f app/src/main/java/com/fallice/ootd/SimpleApp.kt)",
+      "Bash(rm -f app/src/main/java/com/fallice/ootd/MinimalApp.kt)",
+      "Bash(rm -f app/src/main/java/com/fallice/ootd/SimpleMain.kt)",
+      "Bash(rm -f app/src/main/java/com/fallice/ootd/ui/auth/LoginScreen.kt)",
+      "Bash(./gradlew assembleDebug)"
+    ]
+  }
+}
