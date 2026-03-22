@@ -22,6 +22,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -214,7 +215,7 @@ fun OotdApp() {
                 when (activeTab) {
                     "wardrobe" -> WardrobePage()
                     "outfits" -> PlaceholderPage(
-                        icon = Icons.Default.AutoAwesome,
+                        icon = Icons.Default.Star,
                         title = "穿搭灵感",
                         description = "发现精彩穿搭组合"
                     )
@@ -297,7 +298,7 @@ fun Header(title: String) {
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Checkroom,
+                            imageVector = Icons.Default.Home,
                             contentDescription = null,
                             tint = PrimaryForeground,
                             modifier = Modifier.size(20.dp)
@@ -400,8 +401,8 @@ fun BottomTabs(
     onTabChange: (String) -> Unit
 ) {
     val tabs = listOf(
-        Tab(id = "wardrobe", label = "衣橱", icon = Icons.Default.Checkroom),
-        Tab(id = "outfits", label = "穿搭", icon = Icons.Default.AutoAwesome),
+        Tab(id = "wardrobe", label = "衣橱", icon = Icons.Default.Home),
+        Tab(id = "outfits", label = "穿搭", icon = Icons.Default.Star),
         Tab(id = "recommend", label = "推荐", icon = Icons.Default.Favorite),
         Tab(id = "profile", label = "我的", icon = Icons.Default.Person),
     )
@@ -599,7 +600,7 @@ fun CategorySidebar(
                             .padding(vertical = 12.dp, horizontal = 8.dp)
                             .then(
                                 if (isActive) {
-                                    Modifier.background(Surface)
+                                    Modifier.background(MaterialTheme.colorScheme.surface)
                                 } else {
                                     Modifier
                                 }
@@ -852,7 +853,7 @@ fun ClothingCard(item: ClothingItem) {
         color = MaterialTheme.colorScheme.surface,
         shadowElevation = 2.dp,
         tonalElevation = 0.5.dp,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
+        border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth()
@@ -878,7 +879,7 @@ fun ClothingCard(item: ClothingItem) {
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Checkroom,
+                            imageVector = Icons.Default.Home,
                             contentDescription = null,
                             tint = Color.White.copy(alpha = 0.8f),
                             modifier = Modifier.size(32.dp)
@@ -935,7 +936,7 @@ fun ClothingCard(item: ClothingItem) {
                         Surface(
                             shape = RoundedCornerShape(6.dp),
                             color = Muted,
-                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant),
                             tonalElevation = 0.dp
                         ) {
                             Text(
@@ -992,7 +993,7 @@ fun PlaceholderPage(
                     .clip(RoundedCornerShape(16.dp))
                     .background(
                         brush = Brush.verticalGradient(
-                            colors = listOf(Muted, Secondary)
+                            colors = listOf(Muted, Accent)
                         )
                     )
                     .border(
@@ -1040,11 +1041,3 @@ fun PlaceholderPage(
         }
     }
 }
-
-// ==========================================
-// 辅助函数
-// ==========================================
-
-fun Modifier.scale(scale: Float): Modifier = this.then(
-    androidx.compose.ui.draw.scale(scale)
-)
